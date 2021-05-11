@@ -7,6 +7,7 @@ import Dashboard from "./components/Dashboard.js";
 import ProductList from "./components/ProductList.js";
 import CategoryList from "./components/CategoryList.js";
 import ProductDetail from "./components/ProductDetail.js";
+import OrderList from "./components/OrderList.js";
 const Stack = createStackNavigator();
 
 const globalScreenOptions = {
@@ -33,6 +34,11 @@ export default function App() {
           name="CategoryList"
           component={CategoryList}
           options={{ title: "Category List" }}
+        />
+          <Stack.Screen
+          name="OrderList"
+          component={OrderList}
+          options={{ title: "Order List" }}
         />
           <Stack.Screen
           name="ProductDetail"

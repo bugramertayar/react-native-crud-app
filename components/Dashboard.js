@@ -11,7 +11,7 @@ export default function Dashboard({navigation}) {
         <Text onPress={()=> navigation.navigate('CategoryList')}  style={styles.textFieldCategory}>Categories</Text>
       </View>
       <View style={styles.orderCard}>
-        <Text style={styles.textFieldOrder}>Orders</Text>
+        <Text onPress={()=> navigation.navigate('OrderList')} style={styles.textFieldOrder}>Orders</Text>
       </View>
     </View>
   );

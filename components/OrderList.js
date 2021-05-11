@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import { ListItem } from "react-native-elements";
 import { StyleSheet } from "react-native";
+import Moment from 'moment';
 
-export default function CategoryList() {
+export default function OrderList({ navigation }) {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("https://northwind.vercel.app/api/categories")
+    fetch("https://northwind.vercel.app/api/orders")
       .then((response) => response.json())
       .then((json) => setData(json));
   }, []);
@@ -16,9 +17,12 @@ export default function CategoryList() {
         <ListItem key={i} bottomDivider style={styles.item}>
           <ListItem.Content>
             <View style={styles.itemContent}>
-              <ListItem.Title style={styles.title}>{item.name}</ListItem.Title>
+              <ListItem.Title style={styles.title}>{item.shipName}</ListItem.Title>
+              <ListItem.Subtitle>{item.shipAddress.street}</ListItem.Subtitle>
+              <ListItem.Subtitle>{item.shipAddress.country}</ListItem.Subtitle>
+              <ListItem.Subtitle>{item.shipAddress.city}</ListItem.Subtitle>
+              <ListItem.Subtitle>{Moment(item.orderDate).format('MMMM d, YYYY')}</ListItem.Subtitle>
             </View>
-            <ListItem.Subtitle>{item.description}</ListItem.Subtitle>
           </ListItem.Content>
         </ListItem>
       ))}
