@@ -1,11 +1,12 @@
 import React from "react";
-import Dashboard from "./components/Dashboard.js";
-import ProductList from "./components/ProductList.js";
-import CategoryList from "./components/CategoryList.js";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
+import Dashboard from "./components/Dashboard.js";
+import ProductList from "./components/ProductList.js";
+import CategoryList from "./components/CategoryList.js";
+import ProductDetail from "./components/ProductDetail.js";
 const Stack = createStackNavigator();
 
 const globalScreenOptions = {
@@ -32,6 +33,11 @@ export default function App() {
           name="CategoryList"
           component={CategoryList}
           options={{ title: "Category List" }}
+        />
+          <Stack.Screen
+          name="ProductDetail"
+          component={ProductDetail}
+          options={{ title: "Product Detail" }}
         />
       </Stack.Navigator>
     </NavigationContainer>

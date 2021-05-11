@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import { ListItem, Icon } from "react-native-elements";
-import { Text, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 
 export default function ProductList({ navigation }) {
   const [data, setData] = useState([]);
@@ -18,7 +18,7 @@ export default function ProductList({ navigation }) {
   return (
     <View style={styles.container}>
       {data.map((item, i) => (
-        <ListItem key={i} bottomDivider style={styles.item}>
+        <ListItem onPress={() => navigation.navigate('ProductDetail', {productId: item.id})} key={i} bottomDivider style={styles.item}>
           <ListItem.Content>
               <View style={styles.iconView}>
               <Icon name="delete" onPress={() => deleteProduct(item.id)} />
