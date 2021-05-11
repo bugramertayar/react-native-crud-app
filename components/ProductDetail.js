@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     margin: 5,
     color: "#1c56a3",
     fontSize: 20,
-    fontWeight: 500
+    fontWeight: "500"
   },
   textInline: {
     color: "#1a1b1c",

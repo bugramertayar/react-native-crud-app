@@ -32,17 +32,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     fontSize: 30,
-    fontWeight: 600,
+    fontWeight: "600",
     color: "#944c12",
     marginBottom: 30,
   },
   productCard: {
-    width: "inherit",
+    width: "100%",
     height: 100,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    margin: 10,
+    marginTop: 10,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -54,12 +54,12 @@ const styles = StyleSheet.create({
     elevation: 10,
   },
   categoryCard: {
-    width: "inherit",
+    width: "100%",
     height: 100,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    margin: 10,
+    marginTop: 10,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -71,12 +71,12 @@ const styles = StyleSheet.create({
     elevation: 10,
   },
   orderCard: {
-    width: "inherit",
+    width: "100%",
     height: 100,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    margin: 10,
+    marginTop: 10,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -89,17 +89,17 @@ const styles = StyleSheet.create({
   },
   textFieldProduct: {
     fontSize: 30,
-    fontWeight: 400,
+    fontWeight: "400",
     color: "#944c12",
   },
   textFieldCategory: {
     fontSize: 30,
-    fontWeight: 400,
+    fontWeight: "400",
     color: "#125c94",
   },
   textFieldOrder: {
     fontSize: 30,
-    fontWeight: 400,
+    fontWeight: "400",
     color: "#641294",
   },
 });

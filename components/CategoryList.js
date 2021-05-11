@@ -74,18 +74,19 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   iconView: {
-    width: "-webkit-fill-available",
+    width: "100%",
     flexDirection: 'row-reverse',
     justifyContent: "flex-start"
   },
   itemContent: {
-    width: "-webkit-fill-available",
+    width: "100%",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
   },
   container: {
     padding: 10,
+    flex: 1
   },
   addCategory: {
     display: "flex",
