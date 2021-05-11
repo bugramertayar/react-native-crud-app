@@ -8,6 +8,8 @@ import ProductList from "./components/ProductList.js";
 import CategoryList from "./components/CategoryList.js";
 import ProductDetail from "./components/ProductDetail.js";
 import OrderList from "./components/OrderList.js";
+import CategoryAdd from "./components/CategoryAdd.js";
+
 const Stack = createStackNavigator();
 
 const globalScreenOptions = {
@@ -16,7 +18,7 @@ const globalScreenOptions = {
   headerTintColor: "white",
 };
 
-export default function App() {
+export default function App({ navigation }) {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={globalScreenOptions}>
@@ -33,17 +35,22 @@ export default function App() {
         <Stack.Screen
           name="CategoryList"
           component={CategoryList}
-          options={{ title: "Category List" }}
+          options={{title: "Category List"}}
         />
-          <Stack.Screen
+        <Stack.Screen
           name="OrderList"
           component={OrderList}
           options={{ title: "Order List" }}
         />
-          <Stack.Screen
+        <Stack.Screen
           name="ProductDetail"
           component={ProductDetail}
           options={{ title: "Product Detail" }}
+        />
+         <Stack.Screen
+          name="CategoryAdd"
+          component={CategoryAdd}
+          options={{ title: "Add Category" }}
         />
       </Stack.Navigator>
     </NavigationContainer>

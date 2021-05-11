@@ -6,14 +6,26 @@ import { StyleSheet } from "react-native";
 export default function ProductList({ navigation }) {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("https://northwind.vercel.app/api/products")
-      .then((response) => response.json())
-      .then((json) => setData(json));
+    getData();
   }, []);
 
+  const getData = () => {
+    fetch("https://northwind.vercel.app/api/products")
+    .then((response) => response.json())
+    .then((json) => setData(json));
+  }
+
   const deleteProduct = (id) => {
-    fetch('https://northwind.vercel.app/api/products/' + id, { method: 'DELETE' })
-    .then(() => console.log(id));
+    let bodyContent = {
+      id: id
+    }
+    let requestOptions = {
+      method: "DELETE",
+      body: JSON.stringify(bodyContent),
+    }
+    fetch('https://northwind.vercel.app/api/products/' + id, requestOptions)
+    .then((res) => res.json())
+    .then((data) => getData());
   };
   return (
     <View style={styles.container}>
