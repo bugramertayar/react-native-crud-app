@@ -48,6 +48,16 @@ export default function CategoryList({ navigation }) {
           <ListItem.Content>
             <View style={styles.iconView}>
               <Icon name="delete" onPress={() => deleteCategory(item.id)} />
+              <Icon
+                name="edit"
+                onPress={() =>
+                  navigation.navigate("CategoryEdit", {
+                    categoryId: item.id,
+                    categoryName: item.name,
+                    categoryDetail: item.description,
+                  })
+                }
+              />
             </View>
             <View style={styles.itemContent}>
               <ListItem.Title style={styles.title}>{item.name}</ListItem.Title>
@@ -75,8 +85,8 @@ const styles = StyleSheet.create({
   },
   iconView: {
     width: "100%",
-    flexDirection: 'row-reverse',
-    justifyContent: "flex-start"
+    flexDirection: "row-reverse",
+    justifyContent: "flex-start",
   },
   itemContent: {
     width: "100%",
@@ -86,7 +96,7 @@ const styles = StyleSheet.create({
   },
   container: {
     padding: 10,
-    flex: 1
+    flex: 1,
   },
   addCategory: {
     display: "flex",

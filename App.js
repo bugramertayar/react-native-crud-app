@@ -9,6 +9,7 @@ import CategoryList from "./components/CategoryList.js";
 import ProductDetail from "./components/ProductDetail.js";
 import OrderList from "./components/OrderList.js";
 import CategoryAdd from "./components/CategoryAdd.js";
+import CategoryEdit from "./components/CategoryEdit.js";
 
 const Stack = createStackNavigator();
 
@@ -51,6 +52,11 @@ export default function App({ navigation }) {
           name="CategoryAdd"
           component={CategoryAdd}
           options={{ title: "Add Category" }}
+        />
+          <Stack.Screen
+          name="CategoryEdit"
+          component={CategoryEdit}
+          options={{ title: "Edit Category" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
