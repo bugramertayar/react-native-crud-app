@@ -7,7 +7,8 @@ export default function ProductDetail({ route, navigation }) {
   useEffect(() => {
     fetch("https://northwind.vercel.app/api/products/" + productId)
       .then((response) => response.json())
-      .then((json) => setData(json));
+      .then((json) => setData(json))
+      .catch(() => console.log("Api call error"));
   }, []);
 
   return (

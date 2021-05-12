@@ -18,7 +18,8 @@ export default function CategoryAdd({ navigation }) {
 
     fetch("https://northwind.vercel.app/api/categories", requestOptions)
       .then((response) => response.json())
-      .then(() => navigation.navigate("CategoryList"));
+      .then(() => navigation.navigate("CategoryList"))
+      .catch(() => console.log("Api call error"));
   };
 
   return (

@@ -1,32 +1,41 @@
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import { ListItem } from "react-native-elements";
-import { StyleSheet } from "react-native";
-import Moment from 'moment';
+import { StyleSheet, ScrollView } from "react-native";
+import Moment from "moment";
 
 export default function OrderList({ navigation }) {
   const [data, setData] = useState([]);
   useEffect(() => {
     fetch("https://northwind.vercel.app/api/orders")
       .then((response) => response.json())
-      .then((json) => setData(json));
+      .then((json) => setData(json))
+      .catch(() => console.log("Api call error"));
   }, []);
   return (
-    <View style={styles.container}>
-      {data.map((item, i) => (
-        <ListItem key={i} bottomDivider style={styles.item}>
-          <ListItem.Content>
-            <View style={styles.itemContent}>
-              <ListItem.Title style={styles.title}>{item.shipName}</ListItem.Title>
-              <ListItem.Subtitle>{item.shipAddress.street}</ListItem.Subtitle>
-              <ListItem.Subtitle>{item.shipAddress.country}</ListItem.Subtitle>
-              <ListItem.Subtitle>{item.shipAddress.city}</ListItem.Subtitle>
-              <ListItem.Subtitle>{Moment(item.orderDate).format('MMMM d, YYYY')}</ListItem.Subtitle>
-            </View>
-          </ListItem.Content>
-        </ListItem>
-      ))}
-    </View>
+    <ScrollView>
+      <View style={styles.container}>
+        {data.map((item, i) => (
+          <ListItem key={i} bottomDivider style={styles.item}>
+            <ListItem.Content>
+              <View style={styles.itemContent}>
+                <ListItem.Title style={styles.title}>
+                  {item.shipName}
+                </ListItem.Title>
+                <ListItem.Subtitle>{item.shipAddress.street}</ListItem.Subtitle>
+                <ListItem.Subtitle>
+                  {item.shipAddress.country}
+                </ListItem.Subtitle>
+                <ListItem.Subtitle>{item.shipAddress.city}</ListItem.Subtitle>
+                <ListItem.Subtitle>
+                  {Moment(item.orderDate).format("MMMM d, YYYY")}
+                </ListItem.Subtitle>
+              </View>
+            </ListItem.Content>
+          </ListItem>
+        ))}
+      </View>
+    </ScrollView>
   );
 }
 
@@ -50,6 +59,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   container: {
-    padding: 10
+    padding: 10,
   },
 });

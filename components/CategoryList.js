@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import { ListItem, Icon } from "react-native-elements";
-import { StyleSheet, Text } from "react-native";
+import { StyleSheet, Text, ScrollView } from "react-native";
 
 export default function CategoryList({ navigation }) {
   const [data, setData] = useState([]);
@@ -19,7 +19,8 @@ export default function CategoryList({ navigation }) {
   const getData = () => {
     fetch("https://northwind.vercel.app/api/categories")
       .then((response) => response.json())
-      .then((json) => setData(json));
+      .then((json) => setData(json))
+      .catch(() => console.log("Api call error"));
   };
 
   const deleteCategory = (id) => {
@@ -32,41 +33,46 @@ export default function CategoryList({ navigation }) {
     };
     fetch("https://northwind.vercel.app/api/categories/" + id, requestOptions)
       .then((res) => res.json())
-      .then((data) => getData());
+      .then((data) => getData())
+      .catch(() => console.log("Api call error"));
   };
 
   return (
-    <View style={styles.container}>
-      <Text
-        onPress={() => navigation.navigate("CategoryAdd")}
-        style={styles.addCategory}
-      >
-        Add Category<Icon name="add"></Icon>
-      </Text>
-      {data.map((item, i) => (
-        <ListItem key={i} bottomDivider style={styles.item}>
-          <ListItem.Content>
-            <View style={styles.iconView}>
-              <Icon name="delete" onPress={() => deleteCategory(item.id)} />
-              <Icon
-                name="edit"
-                onPress={() =>
-                  navigation.navigate("CategoryEdit", {
-                    categoryId: item.id,
-                    categoryName: item.name,
-                    categoryDetail: item.description,
-                  })
-                }
-              />
-            </View>
-            <View style={styles.itemContent}>
-              <ListItem.Title style={styles.title}>{item.name}</ListItem.Title>
-            </View>
-            <ListItem.Subtitle>{item.description}</ListItem.Subtitle>
-          </ListItem.Content>
-        </ListItem>
-      ))}
-    </View>
+    <ScrollView>
+      <View style={styles.container}>
+        <View style={styles.addCategory}>
+          <Icon name="add"></Icon>
+          <Text onPress={() => navigation.navigate("CategoryAdd")}>
+            Add Category
+          </Text>
+        </View>
+        {data.map((item, i) => (
+          <ListItem key={i} bottomDivider style={styles.item}>
+            <ListItem.Content>
+              <View style={styles.iconView}>
+                <Icon name="delete" onPress={() => deleteCategory(item.id)} />
+                <Icon
+                  name="edit"
+                  onPress={() =>
+                    navigation.navigate("CategoryEdit", {
+                      categoryId: item.id,
+                      categoryName: item.name,
+                      categoryDetail: item.description,
+                    })
+                  }
+                />
+              </View>
+              <View style={styles.itemContent}>
+                <ListItem.Title style={styles.title}>
+                  {item.name}
+                </ListItem.Title>
+              </View>
+              <ListItem.Subtitle>{item.description}</ListItem.Subtitle>
+            </ListItem.Content>
+          </ListItem>
+        ))}
+      </View>
+    </ScrollView>
   );
 }
 
@@ -99,8 +105,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   addCategory: {
-    display: "flex",
-    justifyContent: "flex-end",
-    alignItems: "center",
+    flexDirection: "row-reverse",
+    justifyContent: "flex-start",
+    alignItems: "center"
   },
 });

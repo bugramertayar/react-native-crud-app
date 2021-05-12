@@ -2,7 +2,6 @@ import React from "react";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-
 import Dashboard from "./components/Dashboard.js";
 import ProductList from "./components/ProductList.js";
 import CategoryList from "./components/CategoryList.js";
@@ -14,7 +13,7 @@ import CategoryEdit from "./components/CategoryEdit.js";
 const Stack = createStackNavigator();
 
 const globalScreenOptions = {
-  headerStyle: { backgroundColor: "#360257" },
+  headerStyle: { backgroundColor: "#2C6BED" },
   headerTitleStyle: { color: "white" },
   headerTintColor: "white",
 };
