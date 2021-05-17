@@ -9,6 +9,9 @@ export default function OrderList({ navigation }) {
   useEffect(() => {
     fetch("https://northwind.vercel.app/api/orders")
       .then((response) => response.json())
+      .then((items) => {
+        return items.sort((a,b)=>  new Moment(a.orderDate).format('YYYYMMDD') - new Moment(b.orderDate).format('YYYYMMDD'))
+      })
       .then((json) => setData(json))
       .catch(() => console.log("Api call error"));
   }, []);
